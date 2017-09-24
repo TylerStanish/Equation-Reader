@@ -67,6 +67,8 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
 uniques, id_train = np.unique(y_train, return_inverse=True)
 y_train = to_categorical(id_train, num_of_classes)
+uniques, id_train = np.unique(y_test, return_inverse=True)
+y_test = to_categorical(id_train, num_of_classes)
 
 # samples, channels, rows, cols
 classifier = Sequential()
@@ -79,7 +81,7 @@ classifier.add(Activation('relu'))
 classifier.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
 classifier.add(Dropout(0.5))
 classifier.add(Flatten())
-classifier.add(Dense(128))
+classifier.add(Dense(64))
 classifier.add(Dropout(0.5))
 # I think this is where we went wrong
 classifier.add(Dense(num_of_classes))
@@ -97,7 +99,7 @@ x_test = x_test.reshape(len(x_test), 64, 64, 1)
 # y_test = to_categorical(y_test)
 # y_train = to_categorical(y_train)
 
-classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose=1, validation_data=None)
+classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose=1, validation_data=(x_test, y_test))
 
 
 
