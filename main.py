@@ -15,12 +15,12 @@ from sklearn.cross_validation import train_test_split
 
 start = time.time()
 
-root = '/Users/tylerstanish/Desktop/jsprojects/Equation-Reader/HASYv2/'
+root = '/data'
 
-path_to_data = root + 'hasy-data-labels.csv'
+path_to_data = 'hasy-data-labels.csv'
 data = np.genfromtxt(path_to_data, delimiter=',',usecols=np.arange(0,3), dtype=None)
 files = data[:, 0]
-classes = data[:, 1]
+classes = data[:, 2]
 files = np.delete(files, 0)
 classes = np.delete(classes, 0)
 
@@ -39,11 +39,11 @@ for i in range(0, len(y)):
         num_of_classes += 1
 print(num_of_classes)
 #Directory stuff
-dirs = os.listdir(root+'/hasy-data')
+dirs = os.listdir(root)
 for file in dirs:
     if file == '.DS_STORE':
         continue
-    img = cv2.imread(root + '/hasy-data/' + file)
+    img = cv2.imread(root + file)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     ret, roi = cv2.threshold(img, 127, 255,cv2.THRESH_BINARY_INV)
     roi = cv2.resize(roi, (64, 64))
@@ -81,7 +81,8 @@ classifier.add(Activation('relu'))
 classifier.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
 classifier.add(Dropout(0.5))
 classifier.add(Flatten())
-classifier.add(Dense(64))
+# The dense part was 64 before...
+classifier.add(Dense(8))
 classifier.add(Dropout(0.5))
 # I think this is where we went wrong
 classifier.add(Dense(num_of_classes))
