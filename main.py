@@ -15,20 +15,39 @@ from sklearn.cross_validation import train_test_split
 
 start = time.time()
 
-root = '/data'
-
-path_to_data = 'hasy-data-labels.csv'
-data = np.genfromtxt(path_to_data, delimiter=',',usecols=np.arange(0,3), dtype=None)
-files = data[:, 0]
-classes = data[:, 2]
-files = np.delete(files, 0)
-classes = np.delete(classes, 0)
-
-for i in range(0, files.size):
-    files[i] = str(files[i]).replace('hasy-data/', '')
+# root = 'data'
+root = 'extracted_images'
 
 x = []
-y = classes
+y = []
+
+# Please remove this for production
+count = 0
+
+dirs = os.listdir(root)
+for dir in dirs:
+    if dir[:1] == '.':
+        continue
+    imgs = os.listdir(root + '/' + dir)
+    for im in imgs:
+        if im[:1] == '.':
+            continue
+        if im == 'ldots' or im == ',' or im == '.':
+            continue
+
+        # Please remove this for production
+        if count > 50:
+            continue
+        count += 1
+
+        img = cv2.imread(root + '/' + dir + '/' + im, 0)
+        # print(file)
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+        roi = cv2.resize(roi, (64, 64))
+        x.append(roi)
+        y.append(dir)
+    count = 0
 
 num_of_classes = 0
 
@@ -37,23 +56,6 @@ for i in range(0, len(y)):
     if y[i] not in classes_selected:
         classes_selected.append(y[i])
         num_of_classes += 1
-print(num_of_classes)
-#Directory stuff
-dirs = os.listdir(root)
-for file in dirs:
-    if file == '.DS_STORE':
-        continue
-    img = cv2.imread(root + file)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    ret, roi = cv2.threshold(img, 127, 255,cv2.THRESH_BINARY_INV)
-    roi = cv2.resize(roi, (64, 64))
-    x.append(roi)
-    # images_arr_keys.append(f)
-
-# cv2.imshow("new iamge", images_arr[0])
-# cv2.waitKey(10000)
-# cv2.destroyAllWindows()
-
 
 batch_size = 32
 
@@ -73,7 +75,7 @@ y_test = to_categorical(id_train, num_of_classes)
 # samples, channels, rows, cols
 classifier = Sequential()
 classifier.add(Conv2D(nb_filters, (nb_conv, nb_conv), input_shape=(64, 64, 1)))
-classifier.summary()
+# classifier.summary()
 classifier.add(Activation('relu'))
 # Maybe try making the two last arguments not a tuple
 classifier.add(Conv2D(nb_filters, (nb_conv, nb_conv)))
@@ -82,14 +84,14 @@ classifier.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
 classifier.add(Dropout(0.5))
 classifier.add(Flatten())
 # The dense part was 64 before...
-classifier.add(Dense(8))
+classifier.add(Dense(64))
 classifier.add(Dropout(0.5))
 # I think this is where we went wrong
 classifier.add(Dense(num_of_classes))
 classifier.add(Activation('softmax'))
 classifier.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
 
-nb_epoch = 1
+nb_epoch = 10
 batch_size = 10
 
 x_train = np.asarray(x_train)
@@ -102,6 +104,17 @@ x_test = x_test.reshape(len(x_test), 64, 64, 1)
 
 classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose=1, validation_data=(x_test, y_test))
 
+
+# Now to predict...
+img = cv2.imread('extracted_images/3/3_40.jpg', 0)
+ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+roi = cv2.resize(roi, (64, 64))
+_imagearr = []
+_imagearr.append(roi)
+_imagearr = np.array(_imagearr)
+# _imagearr = np.expand_dims(_imagearr, axis=0)
+_imagearr = _imagearr.reshape(_imagearr.shape + (1,))
+predictions = classifier.predict_classes(_imagearr)
 
 
 
