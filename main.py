@@ -117,7 +117,7 @@ classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose
 
 
 # Now to predict...
-img = cv2.imread('extracted_images/delta/delta_80922.jpg', 0)
+img = cv2.imread('cropped13.jpg', 0)
 ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
 roi = cv2.resize(roi, (64, 64))
 _imagearr = []
