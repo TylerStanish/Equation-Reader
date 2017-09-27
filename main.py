@@ -67,10 +67,21 @@ nb_conv = 3
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
-uniques, id_train = np.unique(y_train, return_inverse=True)
-y_train = to_categorical(id_train, num_of_classes)
-uniques, id_train = np.unique(y_test, return_inverse=True)
-y_test = to_categorical(id_train, num_of_classes)
+# from sklearn.preprocessing import LabelEncoder
+# label_encoder = LabelEncoder()
+# y_train = label_encoder.fit_transform(y_train)
+# y_test = label_encoder.fit_transform(y_test)
+# y_train = np.array(y_train)
+# y_test = np.array(y_test)
+from sklearn.preprocessing import LabelBinarizer
+encoder = LabelBinarizer()
+y_train = encoder.fit_transform(y_train)
+y_test = encoder.fit_transform(y_test)
+
+# uniques, id_train = np.unique(y_train, return_inverse=True)
+# y_train = to_categorical(id_train, num_classes=num_of_classes)
+# uniques, id_test = np.unique(y_test, return_inverse=True)
+# y_test = to_categorical(id_test, num_classes=num_of_classes)
 
 # samples, channels, rows, cols
 classifier = Sequential()
@@ -106,7 +117,7 @@ classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose
 
 
 # Now to predict...
-img = cv2.imread('extracted_images/3/3_40.jpg', 0)
+img = cv2.imread('extracted_images/delta/delta_80922.jpg', 0)
 ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
 roi = cv2.resize(roi, (64, 64))
 _imagearr = []
@@ -114,8 +125,9 @@ _imagearr.append(roi)
 _imagearr = np.array(_imagearr)
 # _imagearr = np.expand_dims(_imagearr, axis=0)
 _imagearr = _imagearr.reshape(_imagearr.shape + (1,))
-predictions = classifier.predict_classes(_imagearr)
+predictions = classifier.predict(_imagearr)
 
+res = encoder.inverse_transform(predictions)
 
 
 end = time.time()
