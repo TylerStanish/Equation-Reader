@@ -3,19 +3,23 @@ import math
 from Operand import Operand
 from Equation import Equation
 
-
 # Function declarations
-def check_for_arrows(nc, i):
+def get_coords_of_adjacent(ncp, ind):
     x0 = y0 = h0 = w0 = 0
     x1 = y1 = h1 = w1 = 0
-    x, y, w, h = cv2.boundingRect(nc[i])
-    if i == 0:
-        x1, y1, w1, h1, = cv2.boundingRect(nc[i + 1])
-    elif i == len(nc) - 1:
-        x0, y0, w0, h0, = cv2.boundingRect(nc[i-1])
+    x, y, w, h = cv2.boundingRect(ncp[ind])
+    if ind == 0:
+        x1, y1, w1, h1, = cv2.boundingRect(ncp[ind + 1])
+    elif ind == len(ncp) - 1:
+        x0, y0, w0, h0, = cv2.boundingRect(ncp[ind - 1])
     else:
-        x0, y0, w0, h0, = cv2.boundingRect(nc[i-1])
-        x1, y1, w1, h1, = cv2.boundingRect(nc[i+1])
+        x0, y0, w0, h0, = cv2.boundingRect(ncp[ind - 1])
+        x1, y1, w1, h1, = cv2.boundingRect(ncp[ind + 1])
+    return x0, y0, h0, w0, x, y, w, h, x1, y1, w1, h1
+
+
+def check_for_arrows(image, equation, ncp, ind):
+    x0, y0, h0, w0, x, y, w, h, x1, y1, w1, h1 = get_coords_of_adjacent(ncp, ind)
 
     if math.fabs(x - x0) < 0.4 * w and math.fabs((x0 + w0) - (x + w)) < 0.4 * w and y0 < y:
         obj = Operand(
@@ -25,6 +29,7 @@ def check_for_arrows(nc, i):
             image=image[y:y + h, x:x + w]
         )
         equation.add_operand(obj)
+        return True
     elif math.fabs(x - x1) < 0.4 * w and math.fabs((x1 + w1) - (x + w)) < 0.4 * w and y1 < y:
         obj = Operand(
             x=x,
@@ -33,33 +38,44 @@ def check_for_arrows(nc, i):
             image=image[y:y + h, x:x + w]
         )
         equation.add_operand(obj)
+        return True
     else:
         equation.add_operand(Operand(x=x, y=y, image=image[y:y + h, x:x + w]))
+        return False
 
 
-image = cv2.imread('IMG_1330.JPG')
-cv2.imshow('direct', image)
+def read_image():
+    image = cv2.imread('IMG_1330.JPG')
+    cv2.imshow('direct', image)
 
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-gray = cv2.fastNlMeansDenoising(gray)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    gray = cv2.fastNlMeansDenoising(gray)
 
-edged = cv2.Canny(gray, 30, 130)
+    edged = cv2.Canny(gray, 30, 130)
 
-hierarchy, contours, _ = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    hierarchy, contours, _ = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
-# Now to sort out the contours
-new_contours = []
-for c in contours:
-    x, y, w, h = cv2.boundingRect(c)
-    if h < 5 or w < 5:
-        continue
-    new_contours.append((x, c))
-new_contours = sorted(new_contours, key=lambda x: x[0])
-nc = [a[1] for a in new_contours]
+    # Now to sort out the contours
+    new_contours = []
+    for c in contours:
+        x, y, w, h = cv2.boundingRect(c)
+        if h < 4 or w < 4:
+            continue
+        new_contours.append((x, c))
+    new_contours = sorted(new_contours, key=lambda x: x[0])
+    nc = [a[1] for a in new_contours]
 
-equation = Equation(image=image)
+    equation = Equation(image=image)
+    i = 0
+    for c in nc:
+        if i >= len(nc):
+            break
+        b = False
+        b = check_for_arrows(image, equation, nc, i)
+        # Where bool is the variable telling us whether or not to pass over the next contour
+        if b:
+            i += 1
+        i += 1
 
-for (i, c) in enumerate(nc):
-    check_for_arrows(nc, i)
+    equation.display_equation()
 
-equation.display_equation()
