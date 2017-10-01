@@ -1,5 +1,6 @@
 import cv2
 
+
 class Equation:
     operands = []
     image = ''

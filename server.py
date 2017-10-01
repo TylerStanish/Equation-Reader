@@ -1,32 +1,11 @@
-import sys
-import socket
-from recognition import read_image
+from flask import Flask
+app = Flask(__name__)
 
-# Server stuff!!!
-HOST = ''  # Symbolic name, meaning all available interfaces
-PORT = 3000  # Arbitrary non-privileged port
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print 'Socket created'
+@app.route('', methods=['GET', 'POST'])
+def classify_image():
+    return 'Now classifying image'
 
-# Bind socket to local host and port
-try:
-    s.bind((HOST, PORT))
-except socket.error as msg:
-    print 'Bind failed. Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
-    sys.exit()
-
-print 'Socket bind complete'
-
-# Start listening on socket
-s.listen(10)
-print 'Socket now listening'
-
-# now keep talking with the client
-while 1:
-    # wait to accept a connection - blocking call
-    conn, addr = s.accept()
-    print 'Connected with ' + addr[0] + ':' + str(addr[1])
-    read_image()
-s.close()
+if __name__ == '__main__':
+    app.run()
 
