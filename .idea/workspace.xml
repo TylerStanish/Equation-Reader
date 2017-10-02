@@ -2,17 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5951debb-ff15-4998-a03f-7c1f40e80d0e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IMG_1324.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IMG_1327.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IMG_1328.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IMG_1329.JPG" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.floydignore" afterPath="$PROJECT_DIR$/.floydignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/operands/Fraction.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/operands/__init__.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Equation.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/IMG_1330.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Operand.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bla.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_0.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_10.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_11.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_12.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_13.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_14.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_15.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img_9.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Equation.py" afterPath="$PROJECT_DIR$/Equation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Operand.py" afterPath="$PROJECT_DIR$/Operand.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.py" afterPath="$PROJECT_DIR$/server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/recognition.py" afterPath="$PROJECT_DIR$/recognition.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,9 +42,11 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="148" column="16" lean-forward="true" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="48">
+              <caret line="122" column="34" lean-forward="true" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -36,11 +54,9 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="44">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,8 +64,8 @@
       <file leaf-file-name="recognition.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recognition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-827">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="268">
+              <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -57,32 +73,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server.py">
+      <file leaf-file-name="Equation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/operands/Equation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Operand.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Operand.py">
+        <entry file="file://$PROJECT_DIR$/operands/Operand.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="495">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Equation.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Equation.py">
+      <file leaf-file-name="Fraction.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/operands/Fraction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/operands/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,6 +129,8 @@
       <find>operand</find>
       <find>Equation()</find>
       <find>Equation(</find>
+      <find>stateful</find>
+      <find>binarizer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,11 +141,15 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/operand.py" />
-        <option value="$PROJECT_DIR$/recognition.py" />
         <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/.floydignore" />
         <option value="$PROJECT_DIR$/Operand.py" />
         <option value="$PROJECT_DIR$/Equation.py" />
+        <option value="$PROJECT_DIR$/operands/__init__.py" />
+        <option value="$PROJECT_DIR$/__init__.py" />
+        <option value="$PROJECT_DIR$/operands/Operand.py" />
+        <option value="$PROJECT_DIR$/operands/Fraction.py" />
+        <option value="$PROJECT_DIR$/recognition.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
@@ -148,6 +182,11 @@
             <path>
               <item name="eqreader" type="b2602c69:ProjectViewProjectNode" />
               <item name="eqreader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eqreader" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eqreader" type="462c0819:PsiDirectoryNode" />
+              <item name="testing_models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="eqreader" type="b2602c69:ProjectViewProjectNode" />
@@ -255,8 +294,8 @@
       <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Python.test" />
         <item index="1" class="java.lang.String" itemvalue="Python.main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.server" />
-        <item index="3" class="java.lang.String" itemvalue="Python.recognition" />
+        <item index="2" class="java.lang.String" itemvalue="Python.recognition" />
+        <item index="3" class="java.lang.String" itemvalue="Python.server" />
       </list>
     </recent_temporary>
   </component>
@@ -284,7 +323,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2728532" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.333795" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30470914" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -498,18 +537,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Operand.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Equation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Operand.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -522,10 +561,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/operands/Fraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/operands/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/operands/Operand.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/operands/Equation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/recognition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-827">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="268">
+          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -534,19 +615,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="44">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="148" column="16" lean-forward="true" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="48">
+          <caret line="122" column="34" lean-forward="true" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

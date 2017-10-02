@@ -1,8 +1,7 @@
 import numpy as np
-np.version.version
 import cv2
 import json
-
+np.random.seed(1337)
 # import math
 import os
 import pickle
@@ -15,13 +14,14 @@ from keras.utils.np_utils import to_categorical
 
 from sklearn.cross_validation import train_test_split
 
+np.version.version
 # from keras.backend import manual_variable_initialization
 # manual_variable_initialization(True)
 
 start = time.time()
 
-root = '/data'
-# root = 'extracted_images'
+# root = '/data'
+root = 'extracted_images'
 
 x = []
 y = []
@@ -42,8 +42,8 @@ for dir in dirs:
             continue
 
         # Please remove this for production
-        # if count > 100:
-        #     continue
+        if count > 100:
+            continue
         count += 1
 
         img = cv2.imread(root + '/' + dir + '/' + im, 0)
@@ -108,7 +108,7 @@ classifier.add(Dense(num_of_classes))
 classifier.add(Activation('softmax'))
 classifier.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
 
-nb_epoch = 15
+nb_epoch = 10
 batch_size = 10
 
 x_train = np.asarray(x_train)
@@ -119,14 +119,14 @@ x_test = x_test.reshape(len(x_test), 64, 64, 1)
 # y_test = to_categorical(y_test)
 # y_train = to_categorical(y_train)
 
-classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose=2, validation_data=(x_test, y_test))
-# classifier.save('output/model.h5')
-
+classifier.fit(x_train, y_train, shuffle=False, batch_size=batch_size, epochs=nb_epoch, verbose=2, validation_data=(x_test, y_test))
+classifier.save('output/model.h5')
 # For python 3 this has to have a / in front!!!
+classifier.save_weights('my_model_weights.h5')
 model = classifier.to_json()
-with open('/output/model.json', 'w') as outfile:
+with open('model.json', 'w') as outfile:
     json.dump(model, outfile)
-pickle.dump(encoder, open('/output/encoder.p', 'wb'), protocol=2)
+pickle.dump(encoder, open('encoder.p', 'wb'), protocol=2)
 
 # del classifier
 # classifier = keras.models.load_model('output/model.h5')
@@ -144,6 +144,19 @@ pickle.dump(encoder, open('/output/encoder.p', 'wb'), protocol=2)
 #
 # res = encoder.inverse_transform(predictions)
 # print(res)
+
+img = cv2.imread('test_images/test_img_002.jpg', 0)
+# ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+roi = cv2.resize(img, (64, 64))
+_imagearr = []
+_imagearr.append(roi)
+_imagearr = np.array(_imagearr)
+# _imagearr = np.expand_dims(_imagearr, axis=0)
+_imagearr = _imagearr.reshape(_imagearr.shape + (1,))
+predictions = classifier.predict(_imagearr)
+print(predictions)
+res = encoder.inverse_transform(predictions)
+print(res)
 
 end = time.time()
 print(end-start)

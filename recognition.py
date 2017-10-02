@@ -1,7 +1,19 @@
 import cv2
 import math
-from Operand import Operand
-from Equation import Equation
+import keras
+import pickle
+import json
+import numpy as np
+
+from operands import Operand
+from operands import Equation
+
+# This is for testing purposes only
+encoder = pickle.load(open('encoder.p', 'rb'))
+# model = keras.models.load_model('output/model.h5')
+with open('model.json') as data_file:
+    data = json.load(data_file)
+model = keras.models.model_from_json(data)
 
 # Function declarations
 def get_coords_of_adjacent(ncp, ind):
@@ -16,6 +28,8 @@ def get_coords_of_adjacent(ncp, ind):
         x0, y0, w0, h0, = cv2.boundingRect(ncp[ind - 1])
         x1, y1, w1, h1, = cv2.boundingRect(ncp[ind + 1])
     return x0, y0, h0, w0, x, y, w, h, x1, y1, w1, h1
+
+# def check_for_fraction(image, equation, ncp, ind):
 
 
 def check_for_arrows(image, equation, ncp, ind):
@@ -43,39 +57,56 @@ def check_for_arrows(image, equation, ncp, ind):
         equation.add_operand(Operand(x=x, y=y, image=image[y:y + h, x:x + w]))
         return False
 
+def resize_to_classify(img):
+    roi = cv2.resize(img, (64, 64))
+    _imagearr = []
+    _imagearr.append(roi)
+    _imagearr = np.array(_imagearr)
+    # _imagearr = np.expand_dims(_imagearr, axis=0)
+    return _imagearr.reshape(_imagearr.shape + (1,))
 
-def read_image():
-    image = cv2.imread('IMG_1330.JPG')
-    cv2.imshow('direct', image)
 
+def read_image(uri):
+    image = cv2.imread(uri)
+    # image = cv2.resize(image, (700, 500))
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.fastNlMeansDenoising(gray)
-
+    # cv2.imshow('de-noised', gray)
+    # cv2.waitKey(0)
     edged = cv2.Canny(gray, 30, 130)
-
+    # cv2.imshow('Canny edges', edged)
+    # cv2.waitKey(0)
     hierarchy, contours, _ = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
     # Now to sort out the contours
     new_contours = []
     for c in contours:
         x, y, w, h = cv2.boundingRect(c)
-        if h < 4 or w < 4:
+        if h < 5 or w < 5:
             continue
-        new_contours.append((x, c))
+        new_contours.append((x, gray[y:y+h, x:x+w]))
     new_contours = sorted(new_contours, key=lambda x: x[0])
     nc = [a[1] for a in new_contours]
+    nc = [resize_to_classify(a) for a in nc]
 
     equation = Equation(image=image)
     i = 0
+    selected = []
+
     for c in nc:
-        if i >= len(nc):
-            break
-        b = False
-        b = check_for_arrows(image, equation, nc, i)
-        # Where bool is the variable telling us whether or not to pass over the next contour
-        if b:
-            i += 1
-        i += 1
+        if c in selected:
+            continue
+        # first classify fractions
+        classification = classify(c)
+        print(classification)
+        if classification == '-':
+            print('classify as fraction')
+        # selected.append(Operand())
 
-    equation.display_equation()
 
+def classify(contour):
+    predictions = model.predict(contour)
+    return encoder.inverse_transform(predictions)
+
+read_image('test_images/img_1330.JPG')
+cv2.destroyAllWindows()
