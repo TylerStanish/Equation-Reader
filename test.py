@@ -6,7 +6,7 @@ import pickle
 classifier = keras.models.load_model('model.h5')
 encoder = pickle.load(open('encoder.p', 'rb'))
 
-img = cv2.imread('test_images/img_15.jpg', 0)
+img = cv2.imread('img_109.jpg', 0)
 # img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
 # ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
 roi = cv2.resize(img, (64, 64))

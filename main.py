@@ -16,37 +16,60 @@ from sklearn.cross_validation import train_test_split
 
 start = time.time()
 
-root = '/data'
-# root = 'extracted_images'
+# root = '/data'
+root = 'extracted_images'
 
 x = []
 y = []
-
-# Please remove this for production
-count = 0
 
 dirs = os.listdir(root)
 for dir in dirs:
     if dir[:1] == '.':
         continue
+    if dir == 'ldots' or dir == ',' or dir == '.' or dir == 'times' or dir == '!':
+        continue
     imgs = os.listdir(root + '/' + dir)
-    for im in imgs:
+    print('scanning ' + dir)
+    for ind, im in enumerate(imgs):
         if im[:1] == '.':
             continue
-        if im == 'ldots' or im == ',' or im == '.':
-            continue
-
         # Please remove this for production
-        if count > 800:
+        if ind > 50:
             continue
-        count += 1
 
         img = cv2.imread(root + '/' + dir + '/' + im, 0)
         # ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
-        roi = cv2.resize(img, (64, 64))
-        x.append(roi)
+        img = cv2.resize(img, (64, 64))
+        # img = cv2.copyMakeBorder(img, 5, 5, 5, 5, cv2.BORDER_CONSTANT, value=[255, 255, 255])
+        _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
+        _, contours, __ = cv2.findContours(img, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+
+        white = np.zeros((img.shape[0], img.shape[1], 1), np.uint8)
+        white[:] = (255)
+        white = cv2.drawContours(white, contours, -1, (0, 0, 0), thickness=3)
+        # for c in contours:
+        #     x1, y1, w, h = cv2.boundingRect(c)
+        #     if h < 4 or w < 4:
+        #         continue
+        #
+        #
+        #
+        #     white = white[y1:y1 + h, x1:x1 + w]
+
+            # kernel = np.ones((5, 5), np.uint8)
+            # white = cv2.dilate(white, kernel=kernel, iterations=1)
+            # white = cv2.resize(white, (128, 128))
+            # white = cv2.copyMakeBorder(white, 3, 3, 3, 3, cv2.BORDER_REPLICATE, value=[255, 255, 255])
+            # for pixel in white:
+            #     print(pixel)
+            # cv2.imshow('reg', img)
+            # cv2.waitKey(0)
+
+        white = cv2.resize(white, (64, 64))
+        x.append(white)
+        cv2.imshow('white', white)
+        cv2.waitKey(0)
         y.append(dir)
-    count = 0
 
 num_of_classes = 0
 
@@ -117,19 +140,19 @@ classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose
 
 
 # Now to predict...
-img = cv2.imread('/test_images/test_img_002.jpg', 0)
-# ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
-roi = cv2.resize(roi, (64, 64))
-_imagearr = []
-_imagearr.append(roi)
-_imagearr = np.array(_imagearr)
-# _imagearr = np.expand_dims(_imagearr, axis=0)
-_imagearr = _imagearr.reshape(_imagearr.shape + (1,))
-predictions = classifier.predict(_imagearr)
-
-res = encoder.inverse_transform(predictions)
-
-print(res)
+# img = cv2.imread('/test_images/test_img_002.jpg', 0)
+# # ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+# roi = cv2.resize(img, (64, 64))
+# _imagearr = []
+# _imagearr.append(roi)
+# _imagearr = np.array(_imagearr)
+# # _imagearr = np.expand_dims(_imagearr, axis=0)
+# _imagearr = _imagearr.reshape(_imagearr.shape + (1,))
+# predictions = classifier.predict(_imagearr)
+#
+# res = encoder.inverse_transform(predictions)
+#
+# print(res)
 
 end = time.time()
 print(end-start)
