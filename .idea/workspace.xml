@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5951debb-ff15-4998-a03f-7c1f40e80d0e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_100.jpg" afterPath="$PROJECT_DIR$/img_100.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_102.jpg" afterPath="$PROJECT_DIR$/img_102.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_103.jpg" afterPath="$PROJECT_DIR$/img_103.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_104.jpg" afterPath="$PROJECT_DIR$/img_104.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_105.jpg" afterPath="$PROJECT_DIR$/img_105.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_106.jpg" afterPath="$PROJECT_DIR$/img_106.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_107.jpg" afterPath="$PROJECT_DIR$/img_107.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_108.jpg" afterPath="$PROJECT_DIR$/img_108.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_110.jpg" afterPath="$PROJECT_DIR$/img_110.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_111.jpg" afterPath="$PROJECT_DIR$/img_111.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_112.jpg" afterPath="$PROJECT_DIR$/img_112.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_113.jpg" afterPath="$PROJECT_DIR$/img_113.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_114.jpg" afterPath="$PROJECT_DIR$/img_114.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img_115.jpg" afterPath="$PROJECT_DIR$/img_115.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test1.py" afterPath="$PROJECT_DIR$/test1.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +16,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="69" column="19" lean-forward="false" selection-start-line="69" selection-start-column="19" selection-end-line="70" selection-end-column="20" />
+            <state relative-caret-position="205">
+              <caret line="64" column="36" lean-forward="true" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -769,8 +752,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="69" column="19" lean-forward="false" selection-start-line="69" selection-start-column="19" selection-end-line="70" selection-end-column="20" />
+        <state relative-caret-position="205">
+          <caret line="64" column="36" lean-forward="true" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
           <folding />
         </state>
       </provider>
