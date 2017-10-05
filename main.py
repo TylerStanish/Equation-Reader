@@ -41,9 +41,9 @@ for dir in dirs:
         # ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
         img = cv2.resize(img, (64, 64))
         # img = cv2.copyMakeBorder(img, 5, 5, 5, 5, cv2.BORDER_CONSTANT, value=[255, 255, 255])
-        _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
+        _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY_INV)
         _, contours, __ = cv2.findContours(img, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
-
+        _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
         white = np.zeros((img.shape[0], img.shape[1], 1), np.uint8)
         white[:] = (255)
         white = cv2.drawContours(white, contours, -1, (0, 0, 0), thickness=3)
@@ -122,8 +122,7 @@ classifier.add(Dropout(0.5))
 # I think this is where we went wrong
 classifier.add(Dense(num_of_classes))
 classifier.add(Activation('softmax'))
-sgd = optimizers.Adadelta(lr=0.0000001, rho=0.95, epsilon=1e-08, decay=0.0)
-classifier.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+classifier.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
 
 nb_epoch = 10
 batch_size = 10
