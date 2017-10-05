@@ -16,8 +16,8 @@ from sklearn.cross_validation import train_test_split
 
 start = time.time()
 
-# root = '/data'
-root = 'extracted_images'
+root = '/data'
+# root = 'extracted_images'
 
 x = []
 y = []
@@ -34,7 +34,7 @@ for dir in dirs:
         if im[:1] == '.':
             continue
         # Please remove this for production
-        if ind > 50:
+        if ind > 1000:
             continue
 
         img = cv2.imread(root + '/' + dir + '/' + im, 0)
@@ -67,8 +67,8 @@ for dir in dirs:
 
         white = cv2.resize(white, (64, 64))
         x.append(white)
-        cv2.imshow('white', white)
-        cv2.waitKey(0)
+        # cv2.imshow('white', white)
+        # cv2.waitKey(0)
         y.append(dir)
 
 num_of_classes = 0
@@ -122,7 +122,7 @@ classifier.add(Dropout(0.5))
 # I think this is where we went wrong
 classifier.add(Dense(num_of_classes))
 classifier.add(Activation('softmax'))
-sgd = optimizers.Adadelta(lr=0.1, rho=0.95, epsilon=1e-08, decay=0.0)
+sgd = optimizers.Adadelta(lr=0.0000001, rho=0.95, epsilon=1e-08, decay=0.0)
 classifier.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
 nb_epoch = 10
