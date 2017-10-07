@@ -7,6 +7,7 @@ import os
 # import cPickle
 import time
 import pickle
+import keras
 
 from keras.models import Sequential, optimizers
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Activation, Dropout
@@ -43,10 +44,10 @@ for dir in dirs:
         # img = cv2.copyMakeBorder(img, 5, 5, 5, 5, cv2.BORDER_CONSTANT, value=[255, 255, 255])
         _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY_INV)
         _, contours, __ = cv2.findContours(img, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
-        _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
+        # _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
         white = np.zeros((img.shape[0], img.shape[1], 1), np.uint8)
-        white[:] = (255)
-        white = cv2.drawContours(white, contours, -1, (0, 0, 0), thickness=3)
+        white[:] = (0)
+        white = cv2.drawContours(white, contours, -1, (255, 255, 255), thickness=10)
         # for c in contours:
         #     x1, y1, w, h = cv2.boundingRect(c)
         #     if h < 4 or w < 4:
@@ -116,13 +117,14 @@ classifier.add(Activation('relu'))
 classifier.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
 classifier.add(Dropout(0.5))
 classifier.add(Flatten())
-# The dense part was 64 before...
+
 classifier.add(Dense(64))
 classifier.add(Dropout(0.5))
 # I think this is where we went wrong
 classifier.add(Dense(num_of_classes))
 classifier.add(Activation('softmax'))
-classifier.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
+opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
+classifier.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 nb_epoch = 10
 batch_size = 10
@@ -136,22 +138,6 @@ x_test = x_test.reshape(len(x_test), 64, 64, 1)
 # y_train = to_categorical(y_train)
 
 classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose=2, validation_data=(x_test, y_test))
-
-
-# Now to predict...
-# img = cv2.imread('/test_images/test_img_002.jpg', 0)
-# # ret, roi = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
-# roi = cv2.resize(img, (64, 64))
-# _imagearr = []
-# _imagearr.append(roi)
-# _imagearr = np.array(_imagearr)
-# # _imagearr = np.expand_dims(_imagearr, axis=0)
-# _imagearr = _imagearr.reshape(_imagearr.shape + (1,))
-# predictions = classifier.predict(_imagearr)
-#
-# res = encoder.inverse_transform(predictions)
-#
-# print(res)
 
 end = time.time()
 print(end-start)
