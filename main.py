@@ -11,7 +11,7 @@ import keras
 
 from keras.models import Sequential, optimizers
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Activation, Dropout
-from keras.utils.np_utils import to_categorical
+from keras.utils import np_utils
 
 from sklearn.cross_validation import train_test_split
 
@@ -35,7 +35,7 @@ for dir in dirs:
         if im[:1] == '.':
             continue
         # Please remove this for production
-        if ind > 1000:
+        if ind > 1500:
             continue
 
         img = cv2.imread(root + '/' + dir + '/' + im, 0)
@@ -88,6 +88,13 @@ nb_pool = 2
 # The dimensions of the filter
 nb_conv = 3
 
+from sklearn.preprocessing import LabelEncoder
+encoder = LabelEncoder()
+encoder.fit(y)
+y = encoder.transform(y)
+# convert integers to dummy variables (i.e. one hot encoded)
+y = np_utils.to_categorical(y)
+
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
 # from sklearn.preprocessing import LabelEncoder
@@ -96,15 +103,18 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 # y_test = label_encoder.fit_transform(y_test)
 # y_train = np.array(y_train)
 # y_test = np.array(y_test)
-from sklearn.preprocessing import LabelBinarizer
-encoder = LabelBinarizer()
-y_train = encoder.fit_transform(y_train)
-y_test = encoder.fit_transform(y_test)
+
+# from sklearn.preprocessing import LabelBinarizer
+# encoder = LabelBinarizer()
+# y_train = encoder.fit_transform(y_train)
+# y_test = encoder.fit_transform(y_test)
 
 # uniques, id_train = np.unique(y_train, return_inverse=True)
 # y_train = to_categorical(id_train, num_classes=num_of_classes)
 # uniques, id_test = np.unique(y_test, return_inverse=True)
 # y_test = to_categorical(id_test, num_classes=num_of_classes)
+
+keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=2, verbose=0, mode='auto')
 
 # samples, channels, rows, cols
 classifier = Sequential()
@@ -126,7 +136,7 @@ classifier.add(Activation('softmax'))
 opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
 classifier.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
-nb_epoch = 10
+nb_epoch = 15
 batch_size = 10
 
 x_train = np.asarray(x_train)

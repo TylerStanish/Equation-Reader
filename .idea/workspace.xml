@@ -2,28 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5951debb-ff15-4998-a03f-7c1f40e80d0e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_100.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_101.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_102.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_103.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_104.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_105.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_106.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_107.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_108.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_109.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_110.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_111.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_112.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_113.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_114.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_115.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img_116.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/encoder.p" afterPath="$PROJECT_DIR$/encoder.p" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model.h5" afterPath="$PROJECT_DIR$/model.h5" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test1.py" afterPath="$PROJECT_DIR$/test1.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,8 +18,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13">
-              <caret line="44" column="68" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="44" selection-end-column="68" />
+            <state relative-caret-position="211">
+              <caret line="116" column="73" lean-forward="false" selection-start-line="116" selection-start-column="73" selection-end-line="116" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -47,8 +28,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+            <state relative-caret-position="284">
+              <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -59,7 +40,7 @@
       <file leaf-file-name="test1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
+            <state relative-caret-position="299">
               <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -72,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/recognition.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="78">
-              <caret line="87" column="4" lean-forward="true" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
+              <caret line="87" column="59" lean-forward="true" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="59" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -162,9 +143,9 @@
         <option value="$PROJECT_DIR$/operands/Operand.py" />
         <option value="$PROJECT_DIR$/operands/Fraction.py" />
         <option value="$PROJECT_DIR$/recognition.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/test1.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -319,8 +300,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.main" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test1" />
         <item index="3" class="java.lang.String" itemvalue="Python.recognition" />
         <item index="4" class="java.lang.String" itemvalue="Python.server" />
       </list>
@@ -741,20 +722,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/recognition.py">
+    <entry file="file://$PROJECT_DIR$/test1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="87" column="4" lean-forward="true" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
+        <state relative-caret-position="299">
+          <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test1.py">
+    <entry file="file://$PROJECT_DIR$/recognition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+        <state relative-caret-position="78">
+          <caret line="87" column="59" lean-forward="true" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="59" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -763,8 +744,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+        <state relative-caret-position="284">
+          <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -773,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="44" column="68" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="44" selection-end-column="68" />
+        <state relative-caret-position="211">
+          <caret line="116" column="73" lean-forward="false" selection-start-line="116" selection-start-column="73" selection-end-line="116" selection-end-column="73" />
           <folding />
         </state>
       </provider>
