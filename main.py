@@ -35,7 +35,7 @@ for dir in dirs:
         if im[:1] == '.':
             continue
         # Please remove this for production
-        if ind > 1500:
+        if ind > 2000:
             continue
 
         img = cv2.imread(root + '/' + dir + '/' + im, 0)
@@ -48,23 +48,6 @@ for dir in dirs:
         white = np.zeros((img.shape[0], img.shape[1], 1), np.uint8)
         white[:] = (0)
         white = cv2.drawContours(white, contours, -1, (255, 255, 255), thickness=10)
-        # for c in contours:
-        #     x1, y1, w, h = cv2.boundingRect(c)
-        #     if h < 4 or w < 4:
-        #         continue
-        #
-        #
-        #
-        #     white = white[y1:y1 + h, x1:x1 + w]
-
-            # kernel = np.ones((5, 5), np.uint8)
-            # white = cv2.dilate(white, kernel=kernel, iterations=1)
-            # white = cv2.resize(white, (128, 128))
-            # white = cv2.copyMakeBorder(white, 3, 3, 3, 3, cv2.BORDER_REPLICATE, value=[255, 255, 255])
-            # for pixel in white:
-            #     print(pixel)
-            # cv2.imshow('reg', img)
-            # cv2.waitKey(0)
 
         white = cv2.resize(white, (64, 64))
         x.append(white)
@@ -114,8 +97,6 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 # uniques, id_test = np.unique(y_test, return_inverse=True)
 # y_test = to_categorical(id_test, num_classes=num_of_classes)
 
-keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=2, verbose=0, mode='auto')
-
 # samples, channels, rows, cols
 classifier = Sequential()
 classifier.add(Conv2D(nb_filters, (nb_conv, nb_conv), input_shape=(64, 64, 1)))
@@ -133,11 +114,11 @@ classifier.add(Dropout(0.5))
 # I think this is where we went wrong
 classifier.add(Dense(num_of_classes))
 classifier.add(Activation('softmax'))
-opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
-classifier.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+opt = keras.optimizers.rmsprop(lr=0.01, decay=1e-6)
+classifier.compile(loss='categorical_crossentropy', optimizer='adadelta', metrics=['accuracy'])
 
 nb_epoch = 15
-batch_size = 10
+batch_size = 5
 
 x_train = np.asarray(x_train)
 x_train = x_train.reshape(len(x_train), 64, 64, 1)
@@ -146,7 +127,7 @@ x_test = x_test.reshape(len(x_test), 64, 64, 1)
 
 # y_test = to_categorical(y_test)
 # y_train = to_categorical(y_train)
-
+# keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=2, verbose=0, mode='auto')
 classifier.fit(x_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose=2, validation_data=(x_test, y_test))
 
 end = time.time()
